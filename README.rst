@@ -1,2 +1,2 @@
-this is my learning repository
-I am learning git
+This is a learning repository for using PIL to manipulate images by Richard
+Morley.

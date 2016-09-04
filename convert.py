@@ -19,8 +19,8 @@ class Convert():
                 pix = pic.getpixel(xy)
                 # Remove the red and green hues from each pixel.
                 #new_pixel = (pix[0],0,0)
-                #new_pixel = (0,pix[1],0)
-                new_pixel = (0,0,pix[2])
+                new_pixel = (0,pix[1],0)
+                #new_pixel = (0,0,pix[2])
                 # Place the altered pixel back into the picture object.
                 pic.putpixel(xy, new_pixel)
         # Save the altered image.

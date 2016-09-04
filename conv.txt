@@ -1,8 +1,0 @@
-trim,time
-vile,virtual
-trunk,tripple
-bilge,bile
-negligent,native
-lemon,large
-pipe,pig
-quibble,quote
