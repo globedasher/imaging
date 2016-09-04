@@ -1,15 +1,23 @@
-#my first tkinter app
+"""
+This is a tkinter application by Richard Morley that will manipulate an image 
+of Homer J. Simpson as a sample of Python coding using Tkinter library and API.
+"""
 
+# Import the necessary libraries, Tkinter and PIL (Python Imaging Library).
 import tkinter
 from tkinter.constants import *
 from tkinter import *
+from tkinter import PhotoImage
 from PIL import Image, ImageTk
 
 
+# Create a class for the application that will display a window with widgets to
+# display and manipulate the image as desired.
 class App:
 
     def __init__(self, master, img):
-
+        # Create the initial window frame and populate it with buttons to
+        # control the application.
         frame = Frame(master)
         frame.pack()
 
@@ -27,9 +35,7 @@ class App:
                 )
         self.button.pack(side=LEFT)
 
-        self.data_input = Entry (
-                frame, command=self.data_input
-                )
+        #self.data_input = Entry (frame, command=self.data_input)
 
     def bart(self):
         print("Doh!")
@@ -40,13 +46,14 @@ class App:
         return
 
     def displayPic(self):
-        pos = photo.width() // 2, photo.height() // 2
-        w = Canvas (root, width=photo.width(), height=photo.height())
+        # Create a canvas and display an image in the window.
+        pos = homer.width // 2, homer.height // 2
+        w = Canvas(root, width=homer.width, height=homer.height)
         w.create_image(pos, image=photo)
         w.pack()
-        return w
 
     def invert(self):
+        # Invert the image.
         current = 0
         dim = homer.getbbox()
         dimX = dim[2]
@@ -60,18 +67,15 @@ class App:
                 p = homer.getpixel(xy)
                 newpixel = p - 255
                 new = PhotoImage(homer.putpixel(xy, newpixel))
-        #newIm = Image(new)
-        #newDim = new.getbbox()
-        #print(newDim)
-        w = Canvas (root, width=dimX, height=dimY)
+        w = Canvas(root, width=dimX, height=dimY)
         w.create_image(pos, image=new)
         w.pack() 
 
 
-homer = Image.open('homer.jpg')
+homer = Image.open('homer.gif')
 root = Tk()
 
-photo = PhotoImage('homer.jpg')
+photo = PhotoImage(file='homer.gif')
 app = App(root, photo)
 
 root.mainloop()

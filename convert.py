@@ -5,25 +5,58 @@ By Richard Morley
 
 from PIL import Image
 
-class Convert():
+class Convert:
 
-    def convert_image_to_blue():
+    def __init__(self, img):
+        self.pic = img
+
+    def convert_image_to_red(self):
         # Open the image to be altered.
-        pic = Image.open('original.jpg')
-        imageSize = list(pic.getbbox())
+        imageSize = list(self.pic.getbbox())
         dimX = imageSize[2]
         dimY = imageSize[3]
         for x in range(dimX):
             for y in range(dimY):
                 xy = x, y
-                pix = pic.getpixel(xy)
-                # Remove the red and green hues from each pixel.
-                #new_pixel = (pix[0],0,0)
-                new_pixel = (0,pix[1],0)
-                #new_pixel = (0,0,pix[2])
+                pix = self.pic.getpixel(xy)
+                # Remove the green and blue hues from each pixel.
+                new_pixel = (pix[0],0,0)
                 # Place the altered pixel back into the picture object.
-                pic.putpixel(xy, new_pixel)
+                self.pic.putpixel(xy, new_pixel)
         # Save the altered image.
-        pic.save('saved.jpg')
+        self.pic.save('saved.jpg')
+    
+    def convert_image_to_green(self):
+        # Open the image to be altered.
+        imageSize = list(self.pic.getbbox())
+        dimX = imageSize[2]
+        dimY = imageSize[3]
+        for x in range(dimX):
+            for y in range(dimY):
+                xy = x, y
+                pix = self.pic.getpixel(xy)
+                # Remove the red and blue hues from each pixel.
+                new_pixel = (0,pix[1],0)
+                # Place the altered pixel back into the picture object.
+                self.pic.putpixel(xy, new_pixel)
+        # Save the altered image.
+        self.pic.save('saved.jpg')
 
-Convert.convert_image_to_blue()
+    def convert_image_to_blue(self):
+        # Open the image to be altered.
+        imageSize = list(self.pic.getbbox())
+        dimX = imageSize[2]
+        dimY = imageSize[3]
+        for x in range(dimX):
+            for y in range(dimY):
+                xy = x, y
+                pix = self.pic.getpixel(xy)
+                # Remove the red and green hues from each pixel.
+                new_pixel = (0,0,pix[2])
+                # Place the altered pixel back into the picture object.
+                self.pic.putpixel(xy, new_pixel)
+        # Save the altered image.
+        self.pic.save('saved.jpg')
+
+img = Convert(Image.open('original.jpg'))
+img.convert_image_to_red()
