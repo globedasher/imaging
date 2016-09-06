@@ -30,9 +30,7 @@ class Editor(QWidget):
 
     def initUI(self):
         
-        #app = QApplication(sys.argv)
-        #window = QtWidgets.QMainWindow()
-        #img = convert.Convert(Image.open('original.jpg'))
+        img = convert.Convert(Image.open('original.jpg'))
         
         red_btn = QPushButton('Make Red', self)
         red_btn.clicked.connect(convert.Convert.convert_image_to_red)
