@@ -111,7 +111,7 @@ class Editor(QWidget):
         lbl.setPixmap(pixmap)
 
         hbox.addWidget(lbl)
-        #self.setLayout(hbox)
+        self.setLayout(hbox)
 
 
 if __name__ == '__main__':
