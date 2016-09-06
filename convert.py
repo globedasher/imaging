@@ -11,8 +11,12 @@ class Convert:
     left in the saved image.
     """
 
-    def __init__(self, original_picture):
-        self.pic = original_picture
+    def __init__(self, original_image):
+
+        self.pic = original_image
+
+    def get_pic(self):
+        return self.pic
 
     def convert_image_to_red(self):
         # Open the image to be altered.
