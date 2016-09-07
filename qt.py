@@ -65,6 +65,8 @@ class Editor(QWidget):
         """
         hbox = QHBoxLayout(self)
         pixmap = QPixmap('original.jpg')
+        # Create the tuple pic_size for image width and height.
+        pic_size = (pixmap.width(), pixmap.height())
 
         lbl =  QLabel(self)
         lbl.setPixmap(pixmap)
@@ -72,6 +74,20 @@ class Editor(QWidget):
         hbox.addWidget(lbl)
         self.setLayout(hbox)
 
+    def display_saved(self):
+        """
+        Displays the altered image after the alter image button is pressed in 
+        application.
+        """
+        hbox = QHBoxLayout(self)
+        pixmap = QPixmap('saved.jpg')
+
+        lbl =  QLabel(self)
+        lbl.setPixmap(pixmap)
+
+        hbox.addWidget(lbl)
+        self.setLayout(hbox)
+    
     def redButtonClicked(self):
         """
         This function is called when the Make Blue button is pressed in the
@@ -98,20 +114,6 @@ class Editor(QWidget):
         img = Convert(Image.open('original.jpg'))
         img.convert_image_to_blue()
         self.display_saved()
-
-    def display_saved(self):
-        """
-        Displays the altered image after the alter image button is pressed in 
-        application.
-        """
-        hbox = QHBoxLayout(self)
-        pixmap = QPixmap('saved.jpg')
-
-        lbl =  QLabel(self)
-        lbl.setPixmap(pixmap)
-
-        hbox.addWidget(lbl)
-        self.setLayout(hbox)
 
 
 if __name__ == '__main__':
